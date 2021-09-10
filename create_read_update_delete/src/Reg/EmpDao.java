@@ -73,12 +73,12 @@ public class EmpDao {
 		while(rs.next())
 		{
 			Employee e =new Employee();
-			e.setName(rs.getString(1));
-			e.setFathername(rs.getString(2));
-			e.setEmail(rs.getString(11));
-			e.setPersonal_address(rs.getString(4));
-			e.setMobile(rs.getString(13));
-			
+			e.setName(rs.getString(2));
+			e.setFathername(rs.getString(3));
+			e.setEmail(rs.getString(12));
+			e.setPersonal_address(rs.getString(5));
+			e.setMobile(rs.getString(14));
+			e.setId(rs.getInt(1));
 			list.add(e);
 			
 		}
@@ -92,6 +92,20 @@ public class EmpDao {
 		
 		
 	}
+	public static int delete(int x) throws SQLException
+	{
+		int status;
+		Connection con=EmpDao.getConnection(); 
+		PreparedStatement ps = con.prepareStatement("delete from employee_table where id=?");
+		ps.setInt(1, x);
+		status=ps.executeUpdate();
+		
+		
+		return status;
+		
+		
+	}
+	
 	
 	
 }
